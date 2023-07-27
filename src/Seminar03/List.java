@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 public class List<V> {
     private Node head;
 
-    public class Node {
+    public class Node{
         V data;
         Node next;
 

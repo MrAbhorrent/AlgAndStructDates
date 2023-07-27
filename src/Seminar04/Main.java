@@ -1,7 +1,9 @@
 package src.Seminar04;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.rmi.server.ExportException;
 
 public class Main<K, V> {
 
@@ -135,6 +137,22 @@ public class Main<K, V> {
     }
 
     public static void main(String[] args) {
-
+        final RedBlackTree rbTree = new RedBlackTree();
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
+            while (true) {
+                try {
+                    int value = Integer.parseInt(reader.readLine());
+                    if (rbTree.add(value)) {
+                        System.out.println("Узел добавлен");
+                    } else {
+                        System.out.println("Узел не добавлен.");
+                    }
+                } catch (Exception exception) {
+                    exception.printStackTrace();
+                }
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
